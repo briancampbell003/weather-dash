@@ -23,6 +23,7 @@
 
 <container class= "d-flex p-1">
     <div id="searchSidebar" class="col-3 p-2">
+
         <div class="card my-2">
             <h2 class="majorText">Search for a City:</h2>
             <p class="lesserText"></p>
@@ -38,24 +39,31 @@
                 <!-- Programmatically add cities as links from localStorage in js -->
             </ul>
         </div>
-        
 
     </div>
 
     <div id="thisCity" class="col-9 p-2">
+       
         <div id="thisCityNow" class="card my-2">
             <h2></h2>
             <ul></ul>
         </div>
 
-        <div id="thisCity5dayText" class="border border-dark p-2">
+        <div id="thisCity5day" class="border border-dark p-2">
             <h3>5-day forecast</h3>
+            <div class="row justify-content-around">
+                
+                <div id="forecastDay1" class="card"></div>
+                <div id="forecastDay2" class="card"></div>
+                <div id="forecastDay3" class="card"></div>
+                <div id="forecastDay4" class="card"></div>
+                <div id="forecastDay5" class="card"></div>
+                
+            </div>
         </div>
 
-        <div id="thisCity5day" class="row justify-content-around">
-            <!-- Append children to this element -->
-            
-        </div>
+
+
     </div>
 
 
