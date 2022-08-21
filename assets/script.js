@@ -29,7 +29,6 @@ let searchBtnHandler = (event) => {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data);
                     let forecastData = data;
                     displayForecastData(city, forecastData);
                 });
@@ -56,12 +55,18 @@ let displayWeatherData = (city, weatherData) => {
 
 let displayForecastData = (city, forecastData) => {
     console.log(forecastData);
-    let cityFiveDay = $('#thisCity5day');
+    let cityFiveDayEl = $('#thisCity5day');
 
     for (let i = 1; i < 6; i++) {
-       forecastDate = dayjs(today).add(i, 'day');
-       cityFiveDay.children(1).children(i-1).text(dayjs(forecastDate).format('M/DD/YYYY'));
-       console.log(forecastDate);
+       let forecastDate = dayjs(today).add(i, 'day').format('M/DD/YYYY');
+       let forecastIconUrl = 'http://openweathermap.org/img/wn/' + forecastData.list[(i*8)-1].weather[0].icon + '@2x.png';
+       
+       cityFiveDayEl.children(1).children().eq(i-1).text(forecastDate);
+        // retrieve information at 24 hr intervals from forecast data and append to corresponding cards
+        cityFiveDayEl.children(1).children().eq(i-1).append( $('<li><img src="' + forecastIconUrl + '"></li>'));
+       cityFiveDayEl.children(1).children().eq(i-1).append( $('<p>Temperature: ' + forecastData.list[(i*8)-1].main.temp + '° F</p>'));
+       cityFiveDayEl.children(1).children().eq(i-1).append( $('<p>Humidity: ' + forecastData.list[(i*8)-1].main.humidity + '%</p>'));
+       cityFiveDayEl.children(1).children().eq(i-1).append( $('<p>Wind: ' + forecastData.list[(i*8)-1].wind.speed + 'mph</p>'));
         
     }
 
