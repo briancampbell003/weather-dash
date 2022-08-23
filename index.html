@@ -18,7 +18,7 @@
 </head>
 
 <header class= "bg-dark text-light text-center py-2" id="weatherHdr">
-    <h1>USA Weather Dashboard</h1>
+    <h1>Weather Dashboard</h1>
 </header>
 
 <container class= "d-flex p-1">
@@ -35,7 +35,7 @@
 
         <div class="card my-2">
             <p class="lesserText">Previously searched cities:</p>
-            <ul>
+            <ul id="oldCitiesList">
                 <!-- Programmatically add cities as links from localStorage in js -->
             </ul>
         </div>
@@ -44,25 +44,23 @@
 
     <div id="thisCity" class="col-9 p-2">
        
-        <div id="thisCityNow" class="card my-2">
+        <div id="thisCityNow" class="card border border-dark p-1 my-2">
             <h2></h2>
-            <ul></ul>
+            <section></section>
         </div>
 
-        <div id="thisCity5day" class="border border-dark p-2">
-            <h3>5-day forecast</h3>
+        <div id="thisCity5day" class="card border border-dark p-1 my-2">
+            <h3></h3>
             <div class="row justify-content-around">
                 
-                <div id="forecastDay1" class="card"></div>
-                <div id="forecastDay2" class="card"></div>
-                <div id="forecastDay3" class="card"></div>
-                <div id="forecastDay4" class="card"></div>
-                <div id="forecastDay5" class="card"></div>
+                <div id="forecastDay1" class="card border border-info"></div>
+                <div id="forecastDay2" class="card border border-info"></div>
+                <div id="forecastDay3" class="card border border-info"></div>
+                <div id="forecastDay4" class="card border border-info"></div>
+                <div id="forecastDay5" class="card border border-info"></div>
                 
             </div>
         </div>
-
-
 
     </div>
 
