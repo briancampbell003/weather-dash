@@ -4,9 +4,11 @@ console.log(today);
 
 function showStoredCities () {
     let storedCities = JSON.parse(localStorage.getItem("savedData")) || [];
+    let oldCityEl = $("#oldCitiesList");
+    oldCityEl.children().empty();
     for (let i = 0; i < storedCities.length; i++) {
         let oldCity = storedCities[i].city;
-        let oldCityEl = $("#oldCitiesList");
+
         oldCityEl.append( $('<li>' + oldCity + '</li>'));
         oldCityEl.children().eq(i).on('click', function() {
             let city = storedCities[i].city;
@@ -16,18 +18,19 @@ function showStoredCities () {
             displayForecastData(city, forecastData);
             console.log(city, weatherData);
         })
-       
     }
 }
 
 let searchBtnHandler = (event) => {
     event.preventDefault();
     let cityInputEl = $('#cityName');
-    let city = cityInputEl.val().trim();
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+    let city = capitalizeFirstLetter(cityInputEl.val().trim());
     
     let weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=ea1fe9ddea793eb6b3591286439bab76&units=imperial';
     let forecastUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=ea1fe9ddea793eb6b3591286439bab76&units=imperial';
-
 
     fetch(weatherUrl)
         .then(function (response) {
@@ -43,8 +46,6 @@ let searchBtnHandler = (event) => {
         })
     let weatherData = JSON.parse(localStorage.getItem("storeWeather"));
 
-    console.log(weatherData);
-
     fetch(forecastUrl)
         .then(function (response) {
             if (response.ok) {
@@ -58,10 +59,8 @@ let searchBtnHandler = (event) => {
             }
         })
     let forecastData = JSON.parse(localStorage.getItem("storeForecast"));
-    console.log(forecastData);
 
     saveData(city, weatherData, forecastData);
-
 }
 
 let displayWeatherData = (city, weatherData) => {
@@ -77,7 +76,10 @@ let displayWeatherData = (city, weatherData) => {
     cityNowEl.children('section').append( $('<p>Temperature: ' + weatherData.main.temp + '° F</p>'));
     cityNowEl.children('section').append( $('<p>Humidity: ' + weatherData.main.humidity + '%</p>'));
     cityNowEl.children('section').append( $('<p>Wind: ' + weatherData.wind.speed + 'mph</p>'));
-    cityNowEl.children('section').append( $('<p>UV Index: ' + '??' + '</p>'));
+
+// NOTE: could not find UV data in either of my API requests that are included with the free subscription
+
+    // cityNowEl.children('section').append( $('<p>UV Index: ' + '??' + '</p>'));
 
 }
 
@@ -91,6 +93,7 @@ let displayForecastData = (city, forecastData) => {
         let forecastIconUrl = 'http://openweathermap.org/img/wn/' + forecastData.list[(i*8)-1].weather[0].icon + '@2x.png';
         
         cityFiveDayEl.children(1).children().eq(i-1).text(forecastDate);
+
             // retrieve information at 24 hr intervals from forecast data and append to corresponding cards
         cityFiveDayEl.children(1).children().eq(i-1).append( $('<p><img src="' + forecastIconUrl + '"></p>'));
         cityFiveDayEl.children(1).children().eq(i-1).append( $('<p>Temperature: ' + forecastData.list[(i*8)-1].main.temp + '° F</p>'));
@@ -108,7 +111,7 @@ let saveData = (city, weatherData, forecastData) => {
     localStorage.setItem("savedData", JSON.stringify(savedDataArr));
 
     console.log(JSON.parse(localStorage.getItem("savedData")));
-
+    console.log(savedDataArr);
     showStoredCities();
 }
 

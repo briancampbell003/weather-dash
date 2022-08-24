@@ -1,4 +1,27 @@
-
+#weatherHdr {
+    color: rgb(194, 240, 255);
+    background-color: rgb(0, 0, 60);
+}
+#containPage {
+    background: url("./pageBackground.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.majorText {
+    font-weight: bolder;
+}
+.lesserText {
+    font-style: italic;
+}
+.boldDate {
+    font-weight: bold;
+}
+#thisCity, #searchSidebar {
+    opacity: 0.75;
+}
 ul {
     list-style: none;
+}
+#oldCitiesList {
+    border: 2px solid blue;
 }

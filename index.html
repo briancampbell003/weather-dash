@@ -17,14 +17,15 @@
     <link rel="stylesheet" href="./assets/style.css" />
 </head>
 
-<header class= "bg-dark text-light text-center py-2" id="weatherHdr">
+<header class= "text-center py-2" id="weatherHdr">
     <h1>Weather Dashboard</h1>
 </header>
+<body>
+<container id="containPage" class= "d-flex p-1">
 
-<container class= "d-flex p-1">
     <div id="searchSidebar" class="col-3 p-2">
 
-        <div class="card my-2">
+        <div class="card border border-dark p-1 my-2">
             <h2 class="majorText">Search for a City:</h2>
             <p class="lesserText"></p>
             <form id="city-form">
@@ -33,31 +34,33 @@
             </form>
         </div>
 
-        <div class="card my-2">
-            <p class="lesserText">Previously searched cities:</p>
-            <ul id="oldCitiesList">
+        <div class="card border border-dark p-1 my-2">
+            <p class="lesserText p-2">Previously searched cities:</p>
+            <ul id="oldCitiesList" class="list-group-flush">
                 <!-- Programmatically add cities as links from localStorage in js -->
             </ul>
         </div>
 
     </div>
 
+
+
     <div id="thisCity" class="col-9 p-2">
        
         <div id="thisCityNow" class="card border border-dark p-1 my-2">
             <h2></h2>
-            <section></section>
+            <section class="px-5"></section>
         </div>
 
         <div id="thisCity5day" class="card border border-dark p-1 my-2">
             <h3></h3>
             <div class="row justify-content-around">
                 
-                <div id="forecastDay1" class="card border border-info"></div>
-                <div id="forecastDay2" class="card border border-info"></div>
-                <div id="forecastDay3" class="card border border-info"></div>
-                <div id="forecastDay4" class="card border border-info"></div>
-                <div id="forecastDay5" class="card border border-info"></div>
+                <div id="forecastDay1" class="card border border-info p-2 my-2"></div>
+                <div id="forecastDay2" class="card border border-info p-2 my-2"></div>
+                <div id="forecastDay3" class="card border border-info p-2 my-2"></div>
+                <div id="forecastDay4" class="card border border-info p-2 my-2"></div>
+                <div id="forecastDay5" class="card border border-info p-2 my-2"></div>
                 
             </div>
         </div>
@@ -72,7 +75,7 @@
 </container>
 
 
-<body>
+
     <script src="./assets/script.js"></script>
 </body>
 </html>
