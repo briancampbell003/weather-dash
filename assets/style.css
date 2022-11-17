@@ -22,6 +22,15 @@
 ul {
     list-style: none;
 }
+li {
+    margin-top: 5px;
+}
+li:hover, li:active {
+    background-color: azure;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 8px;
+}
 #oldCitiesList {
     border: 2px solid blue;
 }
