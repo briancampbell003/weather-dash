@@ -1,6 +1,5 @@
 let searchBtn = $('#searchBtn');
 let today= dayjs(Date(dayjs())).format('M/DD/YYYY');
-console.log(today);
 
 function showStoredCities () {
     let storedCities = JSON.parse(localStorage.getItem("savedData")) || [];
@@ -65,6 +64,7 @@ let searchBtnHandler = (event) => {
 
 let displayWeatherData = (city, weatherData) => {
     console.log(weatherData);
+    document.getElementById("thisCity").style.display = "block";
     let cityNowEl = $('#thisCityNow');
     let cityNowIconUrl = 'http://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png';
 
@@ -114,15 +114,5 @@ let saveData = (city, weatherData, forecastData) => {
     console.log(savedDataArr);
     showStoredCities();
 }
-
-
-
-
-// let displayWeatherData = function(data) {
-//     console.log(data);
-// }
-// function displayWeatherData(data) {
-//     console.log(data);
-// }
 
 searchBtn.on('click', searchBtnHandler);
