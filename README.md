@@ -1,4 +1,4 @@
-# module-6-weather-dash
+# Weather Dashboard
 
 ## Purpose
 This project required using HTML, CSS and Javascript to create from scratch a "weather dashboard" that would respond to user input by displaying the immediate weather information as well as 5-day forecasts for any city submitted.
